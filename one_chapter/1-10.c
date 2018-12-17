@@ -4,8 +4,7 @@ int main(void)
 {
     char data;
 
-    while(1) {
-        data = getchar();
+    while((data = getchar()) != EOF) {
         // 制表符在键盘上是tab 键
         if (data == '\t')
             printf("\\t");
@@ -13,7 +12,7 @@ int main(void)
         else if (data == '\b')
             printf("\\b");
         else if (data == '\\')
-            printf("\\");
+            printf("\\\\");
         else
             putchar(data);
     }

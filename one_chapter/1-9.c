@@ -4,8 +4,7 @@ int main(void)
 {
     char data;
 
-    while(1) {
-        data = getchar();
+    while((data = getchar()) != EOF) {
         if (data == ' ') {
             putchar(data);
             while(1) {
