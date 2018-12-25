@@ -5,6 +5,7 @@
 #define IN      1
 #define OUT     0
 
+
 int main(void)
 {
     int c, i, nc, state;
@@ -45,24 +46,29 @@ int main(void)
         if (wl[i] > maxvalue)
             maxvalue = wl[i];
 
-    for (i = 1; i< MAXWORD; ++i) {
-        printf("%5d - %5d : ", i, wl[i]);
-        if (wl[i] > 0) {
-            if ((len = wl[i] * MAXHIST / maxvalue) <= 0)
-                len = 1;
-        }
-        else
-            len = 0;
 
-        while (len > 0) {
-            putchar('*');
-            --len;
-        }
+    for (i = MAXHIST; i > 0; i--) {
+        for (int j = 1; j < MAXWORD; ++j)
+            if (wl[j] * MAXWORD / maxvalue >= i)
+                printf("%4s", "*");
+            else
+                printf(" ");
         putchar('\n');
     }
 
+    for (i = 1; i < MAXWORD; i++)
+        printf("%4d", wl[i]);
+    putchar('\n');
+    putchar('\n');
+
+    for (i = 1; i < MAXWORD; i++)
+        printf("%4d", i);
+    putchar('\n');
+
+
     if (ovflow > 0)
         printf("There are %d words >= %d\n", ovflow, MAXWORD);
+
 
     return 0;
 }
