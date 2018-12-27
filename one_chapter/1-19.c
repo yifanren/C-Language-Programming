@@ -1,12 +1,7 @@
-/*
- *字符数组，获取最长的行，并打印出来。
- * */
-
 #include <stdio.h>
 #include <string.h>
 
-#define MAXLINE 1000
-#define LONGLINE 80
+#define MAXLINE 100
 
 int getLine(char line[]) {
     char c;
@@ -29,17 +24,29 @@ int getLine(char line[]) {
     return i;
 }
 
+void reverse(char* changeto, char* change) {
+    int len = strlen(change);
+    char *p = change;
+    char *q = changeto;
+    memset(changeto, 0, sizeof(changeto));
+
+    for (int i = 0 ; i < len; i++) {
+        *(q + i) = *(p + (len - 1 -i));
+    }
+}
+
 int main(void)
 {
     int len, max = 0;
     char line[MAXLINE];
-    char longest[MAXLINE][MAXLINE];
+    char changed[MAXLINE];
 
     while ((len = getLine(line)) > 0) {
-        if (len > LONGLINE) {
-            printf("%s \n", line);
-        }
+        reverse(changed, line);
+        printf("line = %s\n", line);
+        printf("changed = %s\n", changed);
     }
+
 
     return 0;
 }
