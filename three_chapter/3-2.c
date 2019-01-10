@@ -1,3 +1,9 @@
+/*
+ * 得到：
+ * 1. 在switch中，语句中只有在case语句中有用。
+ * 2. switch 和 case 中的都是常量值，也可以用字符。（字符有对应的十进制数）
+ *
+ * */
 #include <stdio.h>
 #include <string.h>
 
