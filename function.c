@@ -4,7 +4,9 @@
 
 #include <ctype.h>
 #define MAXVAL 100
+#include <stdio.h>
 
+#if 0
 int sp = 0;
 double val[MAXVAL];
 
@@ -76,18 +78,19 @@ int getop(char [])
     return NUMBER;
 }
 
+#endif
 /**
  * \brief      Obtain line length.
  * \param s    Point to getchar data.
  * \param lim  S exist max length.
  */
-int getline(char s[], int lim)
+int mgetline(char s[], int lim)
 {
     int c, i = 0;
 
     //while (lim-- > 0 && c = getchar() != EOF && c != '\n')
     //can't use lim--, because need leave to '\0'.
-    while (--lim > 0 && c = getchar() != EOF && c != '\n')
+    while (--lim > 0 && (c = getchar()) != EOF && c != '\n')
         s[i++] = c;
 
     if (c == '\n')
@@ -111,7 +114,7 @@ int strindex(char str[], char str1[])
             ;
 
         if (k > 0 && str1[k] == '\0')
-            return i;
+            return i; //i = start postion, k = end position.
     }
 
     return -1;
